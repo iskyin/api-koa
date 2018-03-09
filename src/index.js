@@ -5,8 +5,13 @@ import json from 'koa-json';
 // import views from 'koa-views';
 import bodyparser from 'koa-bodyparser';
 import onerror from 'koa-onerror';
-import crawler from './crawler'
 
+// 爬虫
+import { crawler } from './crawler'
+crawler.crawler();
+
+
+// 路由
 let index = require('./routes/index');
 let users = require('./routes/users');
 
@@ -25,9 +30,6 @@ app.use(async(ctx, next) => {
     const ms = new Date() - start;
     console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
-
-// 下载文件
-cre.download();
 
 // error-handling
 app.on('error', (err, ctx) => {

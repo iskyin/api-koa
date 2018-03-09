@@ -4,11 +4,11 @@ import fs from 'fs';
 import request from 'request-promise';
 import cheerio from 'cheerio';
 import mkdirp from 'mkdirp';
-import config from '../config/index.js'
 
-exports.download=async function(ctx,next){
-  const dir ='downloadImagesFile';
+async function download(ctx,next){
+
   // 创建目录
+  const dir ='downloadImagesFile';
   mkdirp(dir);
 
   // 图片链接地址
@@ -57,3 +57,5 @@ async function getResLink(index, url) {
     });
     return index + '___' + urls[0];
 }
+
+export default
